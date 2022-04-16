@@ -1,0 +1,14 @@
+extends layout
+include ../partials/mixins
+
+block content
+  div.container
+    +sidenav(group_list)
+    h1.text-center Pastries
+    div.d-flex.flex-wrap.gap-2.justify-content-center.w-75.mx-auto
+      each gropu in group_list
+        a.gropu-link(href=group.url)
+          div.d-flex.flex-column.gap-1.align-items-start
+            div
+              img(src=`https://via.placeholder.com/320x120/332D3B/CCCCCC/?text=${category.name}`)
+            

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1#title= title
+  h4 Let's make inventory easy.
+  | Here you can see, update, and create what you have in stock. 
+
+  br
+  br
+
+  each category in data.category_list 
+    br
+    br
+    a(href=category.url class='li4') #[strong #{category.name}]
+    
+  hr
+

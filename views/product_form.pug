@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1#title= title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Name:
+      input#name.form-control(type='text' placeholder='Name' name='name' required='true' value=(undefined===item ? '' : item.name))
+    br
+    div.form-group
+      label(for='description') Description:
+      input#description.form-control(type='text' placeholder='Write a Description' name='description' required='true' value=(undefined===item ? '' : item.description))
+    br
+    div.form-group
+      label(for='quantity') Quantity:
+      input#name.form-control(type='number' min= 0 placeholder='Quantity' name='quantity' required='true' value=(undefined===item ? '' : item.quantity))
+    br
+    div.form-group
+      label(for='price') Price:
+      input#description.form-control(type='number' placeholder='Write a Price' name='price' step="0.01" min= 0 required='true' value=(undefined===item ? '' : item.price))
+    br
+    div.form-group
+      label(for='group') Group:
+      input#name.form-control(type='text' placeholder='Dairy, Produce, etc.' name='group' required='true' value=(undefined===item ? '' : item.group))
+    br
+    div.form-group
+      label(for='best_by') Best By:
+      input#description.form-control(type='date' placeholder='' name='best_by' required='true' value=(undefined===item ? '' : item.best_by))
+    br
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

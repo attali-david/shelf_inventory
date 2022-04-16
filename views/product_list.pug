@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1.li2= title
+
+  div(style='margin-top:20px;margin-left:20px')
+    if products
+      p#title #[strong Inventory:]
+      ul
+        each item in products
+          li
+            a(href=item.url class='li2') #{item.name}
+
+  br
+  a(href='/inventory/category/' + uri + '/create_item' class='li4') #[strong Add Item]
+
+
