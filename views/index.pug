@@ -7,11 +7,11 @@ block content
 
   br
   br
-
-  each category in data.category_list 
-    br
-    br
-    a(href=category.url class='li4') #[strong #{category.name}]
+  if data
+    each category in data.category_list 
+      br
+      br
+      a(href=category.url class='li4') #[strong #{category.name}]
     
   hr
 

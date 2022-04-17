@@ -44,9 +44,7 @@ exports.list = function(req, res, next) {
                 .exec(callback)
         }
     }, function(err, results) {
-            if(err) {return next(err)}
-            console.log(results.item)
-            
+            if(err) {return next(err)}            
             res.render('product_list', {title: results.category.name, products: results.item, uri: req.params.id})
     })
 }
