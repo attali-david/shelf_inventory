@@ -1,24 +1,22 @@
 extends layout
 
 block content
-  div.container.product-wrapper
-    div.d-flex.justify-content-between
-      h1.product-title #{title}
-      div.d-flex.gap-sm.button-wrapper
-        button.btn.btn-outline-info.product-detail-button
-          a.link-fill-sm(href=product.url + '/update') &nbsp;EDIT&nbsp;
-        button.btn.btn-outline-danger.product-detail-button
-          a.link-fill-sm(href=product.url + '/delete') &nbsp;DELETE&nbsp;
-    hr.divider-line
-    div.d-flex.justify-content-center
-      div.product-image-wrapper
-        img(src="https://via.placeholder.com/500x750/888888/111111/?text=Product+Placeholder")
-      div.product-info-wrapper.d-flex.flex-column.align-items-start.gap-1
-        p.product-price $#{product.price}
-        br
-        p.product-description.px-4 #{product.description}
-        br
-        if product.inStock > 0
-          p.product-inStock #{product.inStock} in stock
-        else
-          p.product-outOfStock Out of stock
+  h1.li4= item.name
+
+  div(id=latex)
+    script(src="https://polyfill.io/v3/polyfill.min.js?features=es6" async)
+    script(id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js")
+    p #[strong Description]: #{item.description}
+    br
+    h5.li3 #[strong Quantity:] #{item.quantity}
+    h5.li2 #[strong Price:] #{item.price}
+    
+
+  br
+  br
+  a(href=item.url +'/update' class='li4') Update Item
+  br
+  br
+  a(href=item.url + '/delete' class='li4') Delete Item
+  br
+  br

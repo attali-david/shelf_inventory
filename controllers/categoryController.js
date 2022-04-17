@@ -40,11 +40,13 @@ exports.list = function(req, res, next) {
         item: function(callback) {
             Item.find({})
                 .populate('category')
-                .where(category._id).equals(req.params.id)
+                .where('category').equals(req.params.id)
+                .exec(callback)
         }
     }, function(err, results) {
             if(err) {return next(err)}
-            console.log(results.products)
+            console.log(results.item)
+            
             res.render('product_list', {title: results.category.name, products: results.item, uri: req.params.id})
     })
 }
@@ -105,4 +107,20 @@ exports.update_get = function(req, res, next) {
         }
         res.render('category_form', {title: "Update Book", name: category.name, description: category.description})
     })
+}
+
+exports.delete_get = function(req, res, next) {
+    Category.findById(req.params.id)
+        .exec(function(err, results) {
+        if(err) return next(err)
+        res.render('category_delete', {title: 'Delete Category', category: results})
+    })
+}
+
+exports.delete_post = function(req, res, next) {
+    Category.findByIdAndDelete(req.params.id)
+        .exec(function(err, results) {
+            if(err) return next(err)
+            res.redirect('/inventory')
+        })
 }

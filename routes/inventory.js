@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-const group_controller = require('../controllers/groupController')
 const item_controller = require('../controllers/itemController')
 const item_instance_controller = require('../controllers/itemInstanceController')
 const category_controller = require('../controllers/categoryController')
@@ -23,17 +22,12 @@ router.get('/category/:id/create_item', item_controller.create_get)
 // // POST request to create item
 router.post('/category/:id/create_item', item_controller.create_post)
 
-// // GET request to delete category
-// router.get('/category/:id/delete')
+// GET request to delete category
+router.get('/category/:id/delete', category_controller.delete_get)
 
-// // POST request to delete category
-// router.post('/category/:id/delete')
+// POST request to delete category
+router.post('/category/:id/delete', category_controller.delete_post)
 
-// GET request to update category
-router.get('/category/:id/update')
-
-// // POST request to update Group
-// router.post('/category/:id/update')
 
 // GET request for one category
 router.get('/category/:id', category_controller.list)
@@ -41,24 +35,20 @@ router.get('/category/:id', category_controller.list)
 
 // ITEM ROUTES //
 
+// GET request to delete item
+router.get('/item/:id/delete', item_controller.delete_get)
 
-// // GET request to delete item
-// router.get('/item/:id/delete')
+// POST request to delete item
+router.post('/item/:id/delete', item_controller.delete_post)
 
-// // POST request to delte item
-// router.post('/item/:id/delete')
+// GET request to update item
+router.get('/item/:id/update', item_controller.update_get)
 
-// // GET request to update item
-// router.get('/item/:id/update')
+// POST request to update Group
+router.post('/item/:id/update', item_controller.update_post)
 
-// // POST request to update Group
-// router.post('/item/:id/update')
-
-// // GET request for one item
-// router.get('/item/:id')
-
-// // GET request for list of all items
-// router.get('/items')
+// GET request for one item
+router.get('/item/:id', item_controller.detail)
 
 
 module.exports = router

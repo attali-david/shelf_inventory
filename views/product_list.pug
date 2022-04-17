@@ -9,9 +9,14 @@ block content
       ul
         each item in products
           li
-            a(href=item.url class='li2') #{item.name}
+            a(href=item.url class='li2') #{item.name}: #{item.quantity}
 
   br
   a(href='/inventory/category/' + uri + '/create_item' class='li4') #[strong Add Item]
+  br
+  br
+  a(href='/inventory/category/' + uri + '/delete' class='li4') Delete Category
+  br
+  br
 
 
